@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useState, useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { nlToSqlQuery, NlToSqlQueryInput } from "@/ai/flows/nl-to-sql-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -30,7 +30,7 @@ function SubmitButton() {
 
 export function NlToSqlTool({ queryHistory }: { queryHistory: string[] }) {
   const [copied, setCopied] = useState(false);
-  const [formState, formAction] = useFormState<FormState, FormData>(
+  const [formState, formAction] = useActionState<FormState, FormData>(
     async (prevState, formData) => {
       const naturalLanguageQuery = formData.get("naturalLanguageQuery") as string;
       const input: NlToSqlQueryInput = {
