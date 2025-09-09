@@ -25,17 +25,17 @@ export const navItems: NavItem[] = [
     icon: Bot,
   },
   {
-    title: "Dashboards",
+    title: "대시보드",
     href: "/dashboards",
     icon: LayoutDashboard,
   },
   {
-    title: "API Management",
+    title: "API 관리",
     href: "/api",
     icon: KeyRound,
   },
   {
-    title: "Settings",
+    title: "설정",
     href: "/settings",
     icon: Settings,
   },

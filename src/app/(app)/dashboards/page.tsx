@@ -96,9 +96,9 @@ export default function DashboardsPage() {
     <div className="grid gap-6">
       <div className="flex flex-col md:flex-row justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboards</h1>
+          <h1 className="text-3xl font-bold tracking-tight">대시보드</h1>
           <p className="text-muted-foreground">
-            Create, manage, and share your data visualizations.
+            불러온 데이터로 자유롭게 시각화 해보세요.
           </p>
         </div>
         <Button>
@@ -109,7 +109,7 @@ export default function DashboardsPage() {
             height={16} 
             className="mr-2" 
           />
-          Create Dashboard
+          대시보드 만들기
         </Button>
       </div>
 
@@ -143,7 +143,7 @@ export default function DashboardsPage() {
                   href={dashboard.href} 
                   className="text-sm font-medium text-primary hover:underline flex items-center gap-2"
                 >
-                  View Dashboard
+                  대시보드 보기
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
