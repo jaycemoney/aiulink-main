@@ -33,7 +33,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <SidebarHeader className="p-4">
           <Link href="/dashboard" className="flex items-center gap-2">
             <DataLensLogo className="w-8 h-8 text-primary" />
-            <span className="text-lg font-semibold">DataLens</span>
+            <span className="text-lg font-semibold">AiU-Bridge</span>
           </Link>
         </SidebarHeader>
         <SidebarContent>
