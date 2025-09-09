@@ -32,7 +32,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <Sidebar>
-        <SidebarHeader className="p-4">
+        <SidebarHeader className="p-4 flex justify-center">
           <Link href="/" className="flex items-center gap-2">
             <Icons.logo className="w-8 h-8" />
             <span className="text-lg font-semibold"></span>
@@ -45,7 +45,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <Collapsible key={item.title}>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton
-                      variant="ghost"
                       className="w-full justify-start"
                     >
                       <item.icon />

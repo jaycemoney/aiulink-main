@@ -21,8 +21,10 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
 } from "@/components/ui/chart";
-import { Line, LineChart, CartesianGrid, XAxis, YAxis, Legend, ResponsiveContainer } from "recharts";
+import { Line, LineChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { SmartFilter } from "@/components/dashboard/smart-filter";
 
 const orgPerformanceData = [
@@ -62,18 +64,27 @@ const orgPerformanceData = [
 ];
 
 const timeSeriesData = [
-  { month: "Jan", "Organization A": 92, "Organization B": 94, "Organization C": 98 },
-  { month: "Feb", "Organization A": 88, "Organization B": 91, "Organization C": 102 },
-  { month: "Mar", "Organization A": 95, "Organization B": 96, "Organization C": 101 },
-  { month: "Apr", "Organization A": 91, "Organization B": 93, "Organization C": 99 },
-  { month: "May", "Organization A": 93, "Organization B": 97, "Organization C": 105 },
-  { month: "Jun", "Organization A": 90, "Organization B": 95, "Organization C": 101.7 },
+  { month: "Jan", organization_a: 92, organization_b: 94, organization_c: 98 },
+  { month: "Feb", organization_a: 88, organization_b: 91, organization_c: 102 },
+  { month: "Mar", organization_a: 95, organization_b: 96, organization_c: 101 },
+  { month: "Apr", organization_a: 91, organization_b: 93, organization_c: 99 },
+  { month: "May", organization_a: 93, organization_b: 97, organization_c: 105 },
+  { month: "Jun", organization_a: 90, organization_b: 95, organization_c: 101.7 },
 ];
 
 const chartConfig = {
-  "Organization A": { label: "Org A", color: "hsl(var(--chart-1))" },
-  "Organization B": { label: "Org B", color: "hsl(var(--chart-2))" },
-  "Organization C": { label: "Org C", color: "hsl(var(--chart-3))" },
+  organization_a: { 
+    label: "Organization A", 
+    color: "hsl(var(--chart-1))" 
+  },
+  organization_b: { 
+    label: "Organization B", 
+    color: "hsl(var(--chart-2))" 
+  },
+  organization_c: { 
+    label: "Organization C", 
+    color: "hsl(var(--chart-3))" 
+  },
 } satisfies ChartConfig;
 
 const benchmarkingData = [
@@ -147,19 +158,54 @@ export default function OrganizationalComparisonPage() {
               지난 6개월간 조직별 달성률 추이를 시각화합니다.
             </CardDescription>
           </CardHeader>
-          <CardContent className="overflow-hidden">
-            <ChartContainer config={chartConfig} className="h-[400px] w-full">
-              <LineChart data={timeSeriesData}>
-                <CartesianGrid vertical={false} />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
-                <YAxis unit="%" />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend />
-                <Line dataKey="Organization A" type="monotone" stroke="var(--color-organization-a)" />
-                <Line dataKey="Organization B" type="monotone" stroke="var(--color-organization-b)" />
-                <Line dataKey="Organization C" type="monotone" stroke="var(--color-organization-c)" />
-              </LineChart>
-            </ChartContainer>
+          <CardContent>
+            <div className="h-[400px] w-full">
+              <ChartContainer config={chartConfig} className="h-full w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart 
+                    data={timeSeriesData}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                  >
+                    <CartesianGrid vertical={false} />
+                    <XAxis 
+                      dataKey="month" 
+                      tickLine={false} 
+                      axisLine={false} 
+                      tickMargin={8}
+                      tick={{ fill: "hsl(var(--foreground))", fontSize: 12 }}
+                    />
+                    <YAxis 
+                      unit="%" 
+                      tick={{ fill: "hsl(var(--foreground))", fontSize: 12 }}
+                      tickMargin={8}
+                    />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <ChartLegend content={<ChartLegendContent />} />
+                    <Line 
+                      dataKey="organization_a" 
+                      type="monotone" 
+                      stroke={chartConfig.organization_a.color} 
+                      strokeWidth={2}
+                      dot={{ r: 4 }}
+                    />
+                    <Line 
+                      dataKey="organization_b" 
+                      type="monotone" 
+                      stroke={chartConfig.organization_b.color} 
+                      strokeWidth={2}
+                      dot={{ r: 4 }}
+                    />
+                    <Line 
+                      dataKey="organization_c" 
+                      type="monotone" 
+                      stroke={chartConfig.organization_c.color} 
+                      strokeWidth={2}
+                      dot={{ r: 4 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </ChartContainer>
+            </div>
           </CardContent>
         </Card>
         <Card>
