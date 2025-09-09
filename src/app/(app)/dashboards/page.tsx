@@ -8,42 +8,28 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PlusCircle, BarChart, LineChart, Table, Users, Lock } from "lucide-react";
+import { PlusCircle, Fuel, Factory } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const dashboards = [
   {
-    title: "Marketing KPI",
-    description: "Tracks key performance indicators for marketing campaigns.",
-    icon: BarChart,
+    title: "주유소 대시보드",
+    description: "주유소 판매 및 운영 관련 대시보드를 확인합니다.",
+    href: "/overview",
+    icon: Fuel,
     thumbnailUrl: "https://placehold.co/600x400/009999/FFFFFF",
-    dataAiHint: "marketing chart",
+    dataAiHint: "gas station dashboard",
     shared: true,
   },
   {
-    title: "Q3 Financials",
-    description: "Detailed financial performance for the third quarter.",
-    icon: LineChart,
+    title: "PE/PP 생산계획 대시보드",
+    description: "PE/PP 생산 계획 및 실적 관련 대시보드를 확인합니다.",
+    href: "/analysis",
+    icon: Factory,
     thumbnailUrl: "https://placehold.co/600x400/009999/FFFFFF",
-    dataAiHint: "finance graph",
-    shared: false,
-  },
-  {
-    title: "Weekly User Engagement",
-    description: "User activity and engagement metrics, updated weekly.",
-    icon: Table,
-    thumbnailUrl: "https://placehold.co/600x400/009999/FFFFFF",
-    dataAiHint: "user data",
+    dataAiHint: "factory production dashboard",
     shared: true,
-  },
-  {
-    title: "Production Line Monitoring",
-    description: "Real-time monitoring of production line sensors.",
-    icon: LineChart,
-    thumbnailUrl: "https://placehold.co/600x400/009999/FFFFFF",
-    dataAiHint: "factory machine",
-    shared: false,
   },
 ];
 
@@ -83,11 +69,7 @@ export default function DashboardsPage() {
             </CardHeader>
             <CardContent className="flex-grow" />
             <CardFooter className="flex justify-between items-center">
-              <Badge variant={dashboard.shared ? "outline" : "secondary"}>
-                {dashboard.shared ? <Users className="mr-1.5 h-3 w-3" /> : <Lock className="mr-1.5 h-3 w-3" />}
-                {dashboard.shared ? "Shared" : "Private"}
-              </Badge>
-              <Link href="#" className="text-sm font-medium text-primary hover:underline">
+                            <Link href={dashboard.href} className="text-sm font-medium text-primary hover:underline">
                 View
               </Link>
             </CardFooter>

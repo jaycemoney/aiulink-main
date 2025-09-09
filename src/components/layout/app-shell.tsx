@@ -19,7 +19,9 @@ import {
   Bell,
   Search,
 } from "lucide-react";
-import { DataLensLogo } from "@/components/icons";
+import { Icons } from "@/components/icons";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronRight } from "lucide-react";
 import { navItems } from "@/lib/data";
 import { UserNav } from "./user-nav";
 import { Input } from "../ui/input";
@@ -31,26 +33,58 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader className="p-4">
-          <Link href="/dashboard" className="flex items-center gap-2">
-            <DataLensLogo className="w-8 h-8 text-primary" />
-            <span className="text-lg font-semibold">AiU-Bridge</span>
+          <Link href="/" className="flex items-center gap-2">
+            <Icons.logo className="w-8 h-8" />
+            <span className="text-lg font-semibold">AIU Link</span>
           </Link>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
-            {navItems.map((item) => (
-              <SidebarMenuItem key={item.href}>
-                <Link href={item.href}>
-                  <SidebarMenuButton
-                    isActive={pathname === item.href}
-                    tooltip={item.title}
-                  >
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </Link>
-              </SidebarMenuItem>
-            ))}
+            {navItems.map((item) =>
+              item.children ? (
+                <Collapsible key={item.title}>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton
+                      variant="ghost"
+                      className="w-full justify-start"
+                    >
+                      <item.icon />
+                      <span>{item.title}</span>
+                      <ChevronRight className="ml-auto h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="pt-1">
+                    <SidebarMenu className="ml-4">
+                      {item.children.map((child) => (
+                        <SidebarMenuItem key={child.href}>
+                          <Link href={child.href}>
+                            <SidebarMenuButton
+                              isActive={pathname === child.href}
+                              tooltip={child.title}
+                            >
+                              <child.icon />
+                              <span>{child.title}</span>
+                            </SidebarMenuButton>
+                          </Link>
+                        </SidebarMenuItem>
+                      ))}
+                    </SidebarMenu>
+                  </CollapsibleContent>
+                </Collapsible>
+              ) : (
+                <SidebarMenuItem key={item.href}>
+                  <Link href={item.href}>
+                    <SidebarMenuButton
+                      isActive={pathname === item.href}
+                      tooltip={item.title}
+                    >
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </SidebarMenuButton>
+                  </Link>
+                </SidebarMenuItem>
+              )
+            )}
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter className="p-4">

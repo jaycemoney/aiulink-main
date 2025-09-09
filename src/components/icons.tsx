@@ -1,7 +1,18 @@
-import type { SVGProps } from "react";
+import React, { SVGProps } from 'react';
 
-export function DataLensLogo(props: SVGProps<SVGSVGElement>) {
-  return (
+export const Icons = {
+  logo: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    <img
+      src="/logo.png"
+      alt="AIULink Logo"
+      style={{
+        transform: 'scaleX(3.6) scaleY(1.8)',
+        ...props.style
+      }}
+      {...props}
+    />
+  ),
+  DataLensLogo: (props: SVGProps<SVGSVGElement>) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -16,5 +27,5 @@ export function DataLensLogo(props: SVGProps<SVGSVGElement>) {
       <path d="M6.5 12C9.27 7 14.73 7 17.5 12" />
       <path d="M6.5 12c2.73 5 8.27 5 11 0" />
     </svg>
-  );
-}
+  ),
+};

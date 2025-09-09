@@ -7,9 +7,23 @@ import {
   Timer,
   Users,
   Settings,
+  Briefcase, 
+  GitCompareArrows, 
+  AreaChart, 
+  Telescope, 
+  Bot,
+  Fuel,
+  Factory
 } from "lucide-react";
 
+
+
 export const navItems: NavItem[] = [
+  {
+    title: "AIU Link",
+    href: "/",
+    icon: Bot,
+  },
   {
     title: "Home",
     href: "/dashboard",
@@ -24,6 +38,45 @@ export const navItems: NavItem[] = [
     title: "Dashboards",
     href: "/dashboards",
     icon: LayoutDashboard,
+  },
+  {
+    title: "주유소 대시보드",
+    href: "#",
+    icon: Fuel,
+    children: [
+      {
+        title: "통합 현황",
+        href: "/overview",
+        icon: Briefcase,
+      },
+      {
+        title: "판매 달성도",
+        href: "/sales-performance",
+        icon: AreaChart,
+      },
+      {
+        title: "조직별 비교",
+        href: "/organizational-comparison",
+        icon: Users,
+      },
+    ],
+  },
+  {
+    title: "PE/PP 생산계획 대시보드",
+    href: "#",
+    icon: Factory,
+    children: [
+      {
+        title: "상세 분석",
+        href: "/analysis",
+        icon: Telescope,
+      },
+      {
+        title: "모니터링",
+        href: "/monitoring",
+        icon: GitCompareArrows,
+      },
+    ],
   },
   {
     title: "API Management",

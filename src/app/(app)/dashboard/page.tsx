@@ -55,33 +55,53 @@ export default function DashboardPage() {
             <ul className="space-y-3">
               <li className="flex items-center justify-between">
                 <Link
-                  href="#"
+                  href="/overview"
+                  className="font-medium hover:underline flex items-center gap-2"
+                >
+                  <LayoutGrid className="h-4 w-4 text-muted-foreground" />
+                  <span>통합 현황</span>
+                </Link>
+                <Badge variant="outline">Overview</Badge>
+              </li>
+              <li className="flex items-center justify-between">
+                <Link
+                  href="/sales-performance"
                   className="font-medium hover:underline flex items-center gap-2"
                 >
                   <BarChart className="h-4 w-4 text-muted-foreground" />
-                  <span>Marketing KPI</span>
+                  <span>판매 달성도</span>
                 </Link>
-                <Badge variant="outline">Shared</Badge>
+                <Badge variant="secondary">Sales</Badge>
               </li>
               <li className="flex items-center justify-between">
                 <Link
-                  href="#"
+                  href="/analysis"
                   className="font-medium hover:underline flex items-center gap-2"
                 >
                   <LineChart className="h-4 w-4 text-muted-foreground" />
-                  <span>Q3 Financials</span>
+                  <span>상세 분석</span>
                 </Link>
-                <Badge variant="secondary">Private</Badge>
+                <Badge variant="outline">Analysis</Badge>
               </li>
               <li className="flex items-center justify-between">
                 <Link
-                  href="#"
+                  href="/monitoring"
                   className="font-medium hover:underline flex items-center gap-2"
                 >
                   <Table className="h-4 w-4 text-muted-foreground" />
-                  <span>Weekly User Engagement</span>
+                  <span>모니터링</span>
                 </Link>
-                <Badge variant="outline">Shared</Badge>
+                <Badge variant="secondary">Monitoring</Badge>
+              </li>
+               <li className="flex items-center justify-between">
+                <Link
+                  href="/organizational-comparison"
+                  className="font-medium hover:underline flex items-center gap-2"
+                >
+                  <Table className="h-4 w-4 text-muted-foreground" />
+                  <span>조직별 비교</span>
+                </Link>
+                <Badge variant="outline">Comparison</Badge>
               </li>
             </ul>
           </CardContent>

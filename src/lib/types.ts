@@ -6,6 +6,7 @@ export type NavItem = {
   icon: LucideIcon;
   label?: string;
   disabled?: boolean;
+  children?: NavItem[];
 };
 
 export type DashboardWidget = {
