@@ -115,18 +115,18 @@ export default function ApiManagementPage() {
               </div>
               <Button>
                 <PlusCircle className="mr-2 h-4 w-4" />
-                Generate New Key
+                API 키 생성
               </Button>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Key Preview</TableHead>
-                    <TableHead>Created</TableHead>
-                    <TableHead>Expires</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead>이름</TableHead>
+                    <TableHead>키 미리보기</TableHead>
+                    <TableHead>생성일</TableHead>
+                    <TableHead>만료일</TableHead>
+                    <TableHead>상태</TableHead>
                     <TableHead>
                       <span className="sr-only">Actions</span>
                     </TableHead>

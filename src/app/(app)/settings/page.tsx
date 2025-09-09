@@ -29,19 +29,19 @@ export default function SettingsPage() {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="firstName">First Name</Label>
+              <Label htmlFor="firstName">이름</Label>
               <Input id="firstName" defaultValue="Brian" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="lastName">Last Name</Label>
+              <Label htmlFor="lastName">성</Label>
               <Input id="lastName" defaultValue="Miller" />
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">이메일</Label>
             <Input id="email" type="email" defaultValue="brian@datalens.io" disabled />
           </div>
-          <Button>Save Changes</Button>
+          <Button>저장</Button>
         </CardContent>
       </Card>
 

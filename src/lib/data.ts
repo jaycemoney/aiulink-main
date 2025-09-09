@@ -88,10 +88,10 @@ export const queryHistory: string[] = [
 ];
 
 export const apiKeys: ApiKey[] = [
-  { id: '1', name: 'Marketing Campaign Tracker', key_preview: 'sk_..._a1b2', created_at: '2023-10-25', expires_at: '2024-10-25', status: 'active' },
-  { id: '2', name: 'Product Analytics Pipeline', key_preview: 'pk_..._c3d4', created_at: '2023-09-01', expires_at: 'N/A', status: 'active' },
-  { id: '3', name: 'Old Reporting Key', key_preview: 'sk_..._e5f6', created_at: '2022-05-10', expires_at: '2023-05-10', status: 'expired' },
-  { id: '4', name: 'Test Key (Revoked)', key_preview: 'tk_..._g7h8', created_at: '2023-11-01', expires_at: '2023-11-02', status: 'revoked' },
+  { id: '1', name: '마케팅 캠페인 트래커', key_preview: 'sk_..._a1b2', created_at: '2023-10-25', expires_at: '2024-10-25', status: 'active' },
+  { id: '2', name: '상품 분석 파이프라인', key_preview: 'pk_..._c3d4', created_at: '2023-09-01', expires_at: 'N/A', status: 'active' },
+  { id: '3', name: '오래된 리포트 키', key_preview: 'sk_..._e5f6', created_at: '2022-05-10', expires_at: '2023-05-10', status: 'expired' },
+  { id: '4', name: '테스트 키 (Revoked)', key_preview: 'tk_..._g7h8', created_at: '2023-11-01', expires_at: '2023-11-02', status: 'revoked' },
 ];
 
 export const apiEndpoints: ApiEndpoint[] = [
