@@ -93,24 +93,24 @@ export default function ApiManagementPage() {
   return (
     <div className="grid gap-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">API Management</h1>
+        <h1 className="text-3xl font-bold tracking-tight">API 관리</h1>
         <p className="text-muted-foreground">
-          Manage keys, explore endpoints, and monitor your API usage.
+          API 키 관리, 엔드포인트 탐색, API 사용 모니터링
         </p>
       </div>
       <Tabs defaultValue="keys" className="w-full">
         <TabsList>
-          <TabsTrigger value="keys">API Keys</TabsTrigger>
-          <TabsTrigger value="endpoints">Endpoints</TabsTrigger>
-          <TabsTrigger value="usage">Usage Monitoring</TabsTrigger>
+          <TabsTrigger value="keys">API 키</TabsTrigger>
+          <TabsTrigger value="endpoints">엔드포인트</TabsTrigger>
+          <TabsTrigger value="usage">사용 모니터링</TabsTrigger>
         </TabsList>
         <TabsContent value="keys">
           <Card>
             <CardHeader className="flex flex-row justify-between items-center">
               <div>
-                <CardTitle>API Keys</CardTitle>
+                <CardTitle>API 키</CardTitle>
                 <CardDescription>
-                  Create and manage API keys for your applications.
+                  API 키 생성 및 관리
                 </CardDescription>
               </div>
               <Button>
@@ -167,9 +167,9 @@ export default function ApiManagementPage() {
         <TabsContent value="endpoints">
           <Card>
             <CardHeader>
-              <CardTitle>API Endpoints</CardTitle>
+              <CardTitle>API 엔드포인트</CardTitle>
               <CardDescription>
-                Browse and test available RESTful API endpoints.
+                사용 가능한 RESTful API 엔드포인트를 탐색하고 테스트
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -211,9 +211,9 @@ export default function ApiManagementPage() {
         <TabsContent value="usage">
           <Card>
             <CardHeader>
-              <CardTitle>API Usage Monitoring</CardTitle>
+              <CardTitle>API 사용 모니터링</CardTitle>
               <CardDescription>
-                Usage statistics for the last 7 days.
+                최근 7일간의 API 사용 통계
               </CardDescription>
             </CardHeader>
             <CardContent>
