@@ -84,7 +84,7 @@ export default function AnalysisPage() {
               계획 대비 실제 Contribution Margin 변동 요인
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="h-[400px] w-full">
             <CmVarianceWaterfall />
           </CardContent>
         </Card>

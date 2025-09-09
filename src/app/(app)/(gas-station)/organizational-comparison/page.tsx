@@ -93,103 +93,106 @@ export default function OrganizationalComparisonPage() {
         </p>
       </div>
 
-       <SmartFilter />
-      
-                <Card>
-            <CardHeader>
-              <CardTitle>조직 성과 비교</CardTitle>
-              <CardDescription>
-                조직별 상세 목표/실적 및 평균 성과를 비교합니다.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>조직</TableHead>
-                    <TableHead>목표</TableHead>
-                    <TableHead>실적</TableHead>
-                    <TableHead>달성률 (%)</TableHead>
-                    <TableHead>전월 실적</TableHead>
-                    <TableHead>3개월 평균</TableHead>
-                    <TableHead>12개월 평균</TableHead>
-                    <TableHead>전년동월 대비 (%)</TableHead>
-                    <TableHead>YTD</TableHead>
+      <SmartFilter />
+
+      <Card>
+        <CardHeader>
+          <CardTitle>조직 성과 비교</CardTitle>
+          <CardDescription>
+            조직별 상세 목표/실적 및 평균 성과를 비교합니다.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>조직</TableHead>
+                <TableHead>목표</TableHead>
+                <TableHead>실적</TableHead>
+                <TableHead>달성률 (%)</TableHead>
+                <TableHead>전월 실적</TableHead>
+                <TableHead>3개월 평균</TableHead>
+                <TableHead>12개월 평균</TableHead>
+                <TableHead>전년동월 대비 (%)</TableHead>
+                <TableHead>YTD</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {orgPerformanceData.map((org) => (
+                <TableRow key={org.org}>
+                  <TableCell className="font-medium">{org.org}</TableCell>
+                  <TableCell>{org.target}</TableCell>
+                  <TableCell>{org.actual}</TableCell>
+                  <TableCell>{org.achievement}</TableCell>
+                  <TableCell>{org.prevMonth}</TableCell>
+                  <TableCell>{org.avg3m}</TableCell>
+                  <TableCell>{org.avg12m}</TableCell>
+                  <TableCell className={`flex items-center ${org.yoy > 0 ? "text-success" : "text-destructive"}`}>
+                    {org.yoy > 0 ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}
+                    {Math.abs(org.yoy)}
+                  </TableCell>
+                  <TableCell>{org.ytd}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>시계열 분석</CardTitle>
+            <CardDescription>
+              지난 6개월간 조직별 달성률 추이를 시각화합니다.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="overflow-hidden">
+            <ChartContainer config={chartConfig} className="h-[400px] w-full">
+              <LineChart data={timeSeriesData}>
+                <CartesianGrid vertical={false} />
+                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
+                <YAxis unit="%" />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Legend />
+                <Line dataKey="Organization A" type="monotone" stroke="var(--color-organization-a)" />
+                <Line dataKey="Organization B" type="monotone" stroke="var(--color-organization-b)" />
+                <Line dataKey="Organization C" type="monotone" stroke="var(--color-organization-c)" />
+              </LineChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>벤치마킹</CardTitle>
+            <CardDescription>
+              주요 지표에 대해 조직별 성과를 벤치마킹합니다.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>지표</TableHead>
+                  <TableHead>Organization A</TableHead>
+                  <TableHead>Organization B</TableHead>
+                  <TableHead>Organization C</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {benchmarkingData.map((item) => (
+                  <TableRow key={item.metric}>
+                    <TableCell className="font-medium">{item.metric}</TableCell>
+                    <TableCell className={item.best === 'Organization A' ? 'text-success font-bold' : ''}>{item['Organization A']}</TableCell>
+                    <TableCell className={item.best === 'Organization B' ? 'text-success font-bold' : ''}>{item['Organization B']}</TableCell>
+                    <TableCell className={item.best === 'Organization C' ? 'text-success font-bold' : ''}>{item['Organization C']}</TableCell>
                   </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {orgPerformanceData.map((org) => (
-                    <TableRow key={org.org}>
-                      <TableCell className="font-medium">{org.org}</TableCell>
-                      <TableCell>{org.target}</TableCell>
-                      <TableCell>{org.actual}</TableCell>
-                      <TableCell>{org.achievement}</TableCell>
-                      <TableCell>{org.prevMonth}</TableCell>
-                      <TableCell>{org.avg3m}</TableCell>
-                      <TableCell>{org.avg12m}</TableCell>
-                      <TableCell className={`flex items-center ${org.yoy > 0 ? "text-success" : "text-destructive"}`}>
-                        {org.yoy > 0 ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}
-                        {Math.abs(org.yoy)}
-                      </TableCell>
-                      <TableCell>{org.ytd}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-                  <Card>
-            <CardHeader>
-              <CardTitle>시계열 분석</CardTitle>
-              <CardDescription>
-                지난 6개월간 조직별 달성률 추이를 시각화합니다.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer config={chartConfig} className="h-[400px] w-full">
-                <LineChart data={timeSeriesData}>
-                  <CartesianGrid vertical={false} />
-                  <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
-                  <YAxis unit="%" />
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                  <Legend />
-                  <Line dataKey="Organization A" type="monotone" stroke="var(--color-Organization A)" />
-                  <Line dataKey="Organization B" type="monotone" stroke="var(--color-Organization B)" />
-                  <Line dataKey="Organization C" type="monotone" stroke="var(--color-Organization C)" />
-                </LineChart>
-              </ChartContainer>
-            </CardContent>
-          </Card>
-                  <Card>
-            <CardHeader>
-              <CardTitle>벤치마킹</CardTitle>
-              <CardDescription>
-                주요 지표에 대해 조직별 성과를 벤치마킹합니다.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>지표</TableHead>
-                            <TableHead>Organization A</TableHead>
-                            <TableHead>Organization B</TableHead>
-                            <TableHead>Organization C</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {benchmarkingData.map((item) => (
-                            <TableRow key={item.metric}>
-                                <TableCell className="font-medium">{item.metric}</TableCell>
-                                <TableCell className={item.best === 'Organization A' ? 'text-success font-bold' : ''}>{item['Organization A']}</TableCell>
-                                <TableCell className={item.best === 'Organization B' ? 'text-success font-bold' : ''}>{item['Organization B']}</TableCell>
-                                <TableCell className={item.best === 'Organization C' ? 'text-success font-bold' : ''}>{item['Organization C']}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </CardContent>
-          </Card>
-            </div>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
 }

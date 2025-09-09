@@ -35,7 +35,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <SidebarHeader className="p-4">
           <Link href="/" className="flex items-center gap-2">
             <Icons.logo className="w-8 h-8" />
-            <span className="text-lg font-semibold">AIU Link</span>
+            <span className="text-lg font-semibold"></span>
           </Link>
         </SidebarHeader>
         <SidebarContent>

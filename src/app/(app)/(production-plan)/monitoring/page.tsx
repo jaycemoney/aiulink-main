@@ -66,7 +66,9 @@ export default function MonitoringPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ProductionTrendChart />
+            <div className="h-[350px] w-full">
+              <ProductionTrendChart />
+            </div>
           </CardContent>
         </Card>
         <Card>

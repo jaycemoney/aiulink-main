@@ -63,21 +63,31 @@ export default function ProductionTrendChart() {
   }, []);
 
   return (
-    <div className="h-80 w-full" ref={containerRef}>
-      <ChartContainer config={chartConfig}>
+    <div className="h-full w-full overflow-hidden" ref={containerRef}>
+      <ChartContainer config={chartConfig} className="h-full w-full">
         <ResponsiveContainer key={width} width="100%" height="100%">
-          <LineChart data={chartData} margin={{ right: 16, left: -16 }}>
+          <LineChart 
+            data={chartData} 
+            margin={{ 
+              top: 20, 
+              right: 20, 
+              bottom: 40, 
+              left: 10 
+            }}
+          >
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="date"
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tick={{ fill: "hsl(var(--foreground))", fontSize: 12 }}
+              tick={{ fill: "hsl(var(--foreground))", fontSize: 11 }}
+              interval="preserveStartEnd"
             />
             <YAxis
-              tick={{ fill: "hsl(var(--foreground))", fontSize: 12 }}
+              tick={{ fill: "hsl(var(--foreground))", fontSize: 11 }}
               tickMargin={8}
+              width={40}
             />
             <ChartTooltip content={<ChartTooltipContent />} />
             <ChartLegend content={<ChartLegendContent />} />
