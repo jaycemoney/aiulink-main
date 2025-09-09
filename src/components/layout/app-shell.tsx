@@ -32,10 +32,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <Sidebar>
-        <SidebarHeader className="p-4 flex justify-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Icons.logo className="w-8 h-8" />
-            <span className="text-lg font-semibold"></span>
+        <SidebarHeader className="p-4 grid place-items-center">
+          <Link href="/">
+            <Icons.logo className="w-14 h-14" />
           </Link>
         </SidebarHeader>
         <SidebarContent>
